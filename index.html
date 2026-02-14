@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Calentine, My Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Music (Autoplay with controls) -->
+    <button id="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+    <audio id="bg-music" loop>
+        <!-- 
+            NOTE TO USER: 
+            Please download "You're Still The One" by Shania Twain (or your preferred version/cover),
+            rename the file to "music.mp3" and place it inside the "assets" folder.
+        -->
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts-bg">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Happy Valentine, My Love ❤️</h1>
+            <p class="fade-in delay-1">Every day with you feels like my favorite love story.</p>
+            <button class="btn-primary fade-in delay-2" onclick="scrollToElement('gallery')">Open My Heart 💌</button>
+        </div>
+    </header>
+
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Your Beautiful Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/gallery1.jpeg" alt="Couple photo 1">
+                <div class="caption">The day I found my forever.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/gallery2.jpeg" alt="Couple photo 2">
+                <div class="caption">Your smile is my favorite place.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/gallery3.jpeg" alt="Couple photo 3">
+                <div class="caption">With you, every step feels right.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/gallery4.jpeg" alt="Couple photo 4">
+                <div class="caption">Home is wherever you are.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/gallery5.jpeg" alt="Couple photo 5">
+                <div class="caption">Our love shines brighter than the stars.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/gallery6.jpeg" alt="Couple photo 6">
+                <div class="caption">My favorite memory is us.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section class="letter-section">
+        <div class="letter-card">
+            <div class="floating-heart-deco">💖</div>
+            <h2>My Dearest,</h2>
+            <p>
+                My love,<br><br>
+                Since you came into my life, everything feels more meaningful.
+                You are my comfort, my happiness, my safe place.
+                No matter what happens, I choose you. Today, tomorrow, and always.<br><br>
+                <strong style="font-family: 'Great Vibes', cursive; font-size: 1.5rem;">Happy Calentine ❤️</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Big Photo Section -->
+    <section class="big-photo-section">
+        <div class="big-photo-container">
+            <img src="https://placehold.co/1200x800/FFB7B2/white?text=Dancing+Under+Lights"
+                alt="Dancing under fairy lights">
+            <div class="overlay-text">Forever With You ✨</div>
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section id="final" class="final-section">
+        <h2>Will you continue writing this love story with me?</h2>
+        <button class="btn-primary pulse-btn" onclick="showLove()">Always ❤️</button>
+    </section>
+
+    <!-- Hidden Love Message Overlay -->
+    <div id="love-overlay" class="love-overlay">
+        <div class="love-content">
+            <h1>I Love You More Than Words Can Say! 💖</h1>
+            <p>Here's to forever.</p>
+            <button class="btn-secondary" onclick="closeOverlay()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Music Toggle
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const btn = document.getElementById('music-btn');
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸ Pause Music";
+            } else {
+                music.pause();
+                btn.innerHTML = "🎵 Play Music";
+            }
+        }
+
+        // Smooth Scroll
+        function scrollToElement(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show Love Animation
+        function showLove() {
+            const overlay = document.getElementById('love-overlay');
+            overlay.classList.add('active');
+
+            // simple confetti burst
+            for (let i = 0; i < 30; i++) {
+                createConfetti();
+            }
+        }
+
+        function closeOverlay() {
+            document.getElementById('love-overlay').classList.remove('active');
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.innerHTML = '❤';
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+        }
+    </script>
+</body>
+
+</html>
